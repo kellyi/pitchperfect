@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NsT-wy-1qT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +29,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omh-75-eny">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX9-vc-aAc">
@@ -43,7 +42,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="omh-75-eny" firstAttribute="top" secondItem="vuK-8X-fN4" secondAttribute="bottom" constant="18" id="8rb-Cv-uEQ"/>
                             <constraint firstAttribute="centerX" secondItem="vuK-8X-fN4" secondAttribute="centerX" id="BX4-hK-ZRu"/>
@@ -161,17 +160,28 @@
                                     <action selector="playChipmunkAudio:" destination="fOT-t7-K1l" eventType="touchUpInside" id="gcE-yl-1lG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-cM-0kr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="darf">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playDarf:" destination="fOT-t7-K1l" eventType="touchUpInside" id="PRq-eA-9jH"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="562-hH-zIb" secondAttribute="trailing" constant="35" id="FmS-jB-WQn"/>
                             <constraint firstItem="Hsz-l6-9IM" firstAttribute="top" secondItem="V9P-ob-2Ch" secondAttribute="bottom" constant="20" id="I1S-Ci-bI8"/>
                             <constraint firstItem="5UO-T3-LWf" firstAttribute="top" secondItem="cbD-v6-DPn" secondAttribute="bottom" constant="50" id="KQc-Tq-Vj3"/>
-                            <constraint firstItem="5UO-T3-LWf" firstAttribute="leading" secondItem="9Bw-bX-gIB" secondAttribute="leadingMargin" constant="50" id="V8l-rw-CKX"/>
                             <constraint firstItem="cbD-v6-DPn" firstAttribute="top" secondItem="kP0-2m-VPc" secondAttribute="bottom" constant="50" id="WE5-1v-lxq"/>
+                            <constraint firstItem="Cbc-cM-0kr" firstAttribute="top" secondItem="562-hH-zIb" secondAttribute="bottom" constant="50" id="blM-9v-Yl1"/>
                             <constraint firstItem="562-hH-zIb" firstAttribute="top" secondItem="kP0-2m-VPc" secondAttribute="bottom" constant="50" id="fUv-ef-4fE"/>
-                            <constraint firstItem="cbD-v6-DPn" firstAttribute="leading" secondItem="9Bw-bX-gIB" secondAttribute="leadingMargin" constant="45" id="o8Q-VX-zsP" userLabel="Horizontal Space - (50) - Button - View"/>
-                            <constraint firstAttribute="trailing" secondItem="562-hH-zIb" secondAttribute="trailing" constant="50" id="tMO-OV-DTL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cbc-cM-0kr" secondAttribute="trailing" constant="35" id="or9-tw-hrM"/>
                             <constraint firstAttribute="centerX" secondItem="V9P-ob-2Ch" secondAttribute="centerX" constant="-2" id="tXv-tm-Pgg"/>
+                            <constraint firstItem="5UO-T3-LWf" firstAttribute="leading" secondItem="9Bw-bX-gIB" secondAttribute="leadingMargin" constant="35" id="xaD-o9-cbX"/>
+                            <constraint firstItem="cbD-v6-DPn" firstAttribute="leading" secondItem="9Bw-bX-gIB" secondAttribute="leadingMargin" constant="35" id="ytd-Hh-hdF"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -179,14 +189,17 @@
                                 <exclude reference="562-hH-zIb"/>
                                 <exclude reference="V9P-ob-2Ch"/>
                                 <exclude reference="5UO-T3-LWf"/>
+                                <exclude reference="Cbc-cM-0kr"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="WE5-1v-lxq"/>
-                                <exclude reference="o8Q-VX-zsP"/>
-                                <exclude reference="KQc-Tq-Vj3"/>
-                                <exclude reference="V8l-rw-CKX"/>
+                                <exclude reference="ytd-Hh-hdF"/>
+                                <exclude reference="FmS-jB-WQn"/>
                                 <exclude reference="fUv-ef-4fE"/>
-                                <exclude reference="tMO-OV-DTL"/>
+                                <exclude reference="KQc-Tq-Vj3"/>
+                                <exclude reference="xaD-o9-cbX"/>
+                                <exclude reference="blM-9v-Yl1"/>
+                                <exclude reference="or9-tw-hrM"/>
                                 <exclude reference="tXv-tm-Pgg"/>
                                 <exclude reference="I1S-Ci-bI8"/>
                             </mask>
@@ -197,23 +210,22 @@
                                 <include reference="562-hH-zIb"/>
                                 <include reference="V9P-ob-2Ch"/>
                                 <include reference="5UO-T3-LWf"/>
+                                <include reference="Cbc-cM-0kr"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="WE5-1v-lxq"/>
-                                <include reference="o8Q-VX-zsP"/>
-                                <include reference="KQc-Tq-Vj3"/>
-                                <include reference="V8l-rw-CKX"/>
+                                <include reference="ytd-Hh-hdF"/>
+                                <include reference="FmS-jB-WQn"/>
                                 <include reference="fUv-ef-4fE"/>
-                                <include reference="tMO-OV-DTL"/>
+                                <include reference="KQc-Tq-Vj3"/>
+                                <include reference="xaD-o9-cbX"/>
+                                <include reference="blM-9v-Yl1"/>
+                                <include reference="or9-tw-hrM"/>
                                 <include reference="tXv-tm-Pgg"/>
                                 <include reference="I1S-Ci-bI8"/>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="fastButton" destination="562-hH-zIb" id="PuH-4D-R7W"/>
-                        <outlet property="slowButton" destination="cbD-v6-DPn" id="Dim-lW-ZWi"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psd-QB-odC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,6 +234,7 @@
     </scenes>
     <resources>
         <image name="chipmunk" width="100" height="100"/>
+        <image name="darf" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>

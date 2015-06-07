@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E903B4ED-5CF4-4D53-AEFF-8B925D592AC6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PitchPerfect</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FB0515CDE09D8421DF6EFDB80508BE8A9C8BFD1A</key>
+		<string>github.com:kellyi/pitchperfect.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PitchPerfect.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FB0515CDE09D8421DF6EFDB80508BE8A9C8BFD1A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:kellyi/pitchperfect.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FB0515CDE09D8421DF6EFDB80508BE8A9C8BFD1A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FB0515CDE09D8421DF6EFDB80508BE8A9C8BFD1A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PitchPerfect</string>
+		</dict>
+	</array>
+</dict>
+</plist>

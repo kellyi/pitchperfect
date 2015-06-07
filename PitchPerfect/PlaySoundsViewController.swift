@@ -10,17 +10,16 @@ import UIKit
 import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
-    
-    @IBOutlet weak var slowButton: UIButton!
-    @IBOutlet weak var fastButton: UIButton!
-    
-    var player = AVAudioPlayer()
+
+    var player:AVAudioPlayer!
     var receivedAudio = RecordedAudio()
-    var engine = AVAudioEngine()
+    var recordingFile:AVAudioFile!
+    var engine:AVAudioEngine!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        engine = AVAudioEngine()
+        recordingFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
         player = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         player.enableRate = true
     }
@@ -31,51 +30,52 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlow(sender: UIButton) {
-        NSLog("playing slow audio")
-        playSpeed("slow")
+        playSpeed(0.5)
     }
 
     @IBAction func playFast(sender: UIButton) {
-        NSLog("playing fast audio")
-        playSpeed("fast")
+        playSpeed(2.0)
     }
     
     @IBAction func stopPlaying(sender: UIButton) {
         player.stop()
     }
     
-    func playSpeed(speed: NSString) {
-        var play_rate = speed == "slow" ? 0.5 : 2.0
+    func playSpeed(speed: Float) {
         player.stop()
-        player.rate = Float(play_rate)
+        player.rate = Float(speed)
         player.currentTime = 0.0
         player.play()
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
+        playPitch(1000)
+    }
+    
+    
+    @IBAction func playDarf(sender: UIButton) {
+        playPitch(-1000)
+    }
+    
+    
+    func playPitch(pitch: Float) {
+        player.stop()
+        engine.stop()
+        engine.reset()
+        
         var pitchPlayer = AVAudioPlayerNode()
         var timePitch = AVAudioUnitTimePitch()
-        timePitch.pitch = 1200.0
+        timePitch.pitch = pitch
         
         engine.attachNode(pitchPlayer)
         engine.attachNode(timePitch)
+        engine.connect(pitchPlayer, to: timePitch, format: recordingFile.processingFormat)
+        engine.connect(timePitch, to: engine.outputNode, format: recordingFile.processingFormat)
+        pitchPlayer.scheduleFile(recordingFile, atTime: nil, completionHandler: nil)
+        engine.startAndReturnError(nil)
         
-        
-        
+        pitchPlayer.play()
     }
     
-    func playPitch(pitch: NSString) {
-        
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
