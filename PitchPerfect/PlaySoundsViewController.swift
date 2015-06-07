@@ -23,11 +23,6 @@ class PlaySoundsViewController: UIViewController {
         player = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         player.enableRate = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func playSlow(sender: UIButton) {
         playSpeed(0.5)
@@ -52,11 +47,9 @@ class PlaySoundsViewController: UIViewController {
         playPitch(1000)
     }
     
-    
     @IBAction func playDarf(sender: UIButton) {
         playPitch(-1000)
     }
-    
     
     func playPitch(pitch: Float) {
         player.stop()
@@ -77,5 +70,8 @@ class PlaySoundsViewController: UIViewController {
         pitchPlayer.play()
     }
     
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
