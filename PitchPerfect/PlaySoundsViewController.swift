@@ -12,12 +12,13 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     var player:AVAudioPlayer!
-    var receivedAudio = RecordedAudio()
+    var receivedAudio:RecordedAudio!
     var recordingFile:AVAudioFile!
     var engine:AVAudioEngine!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Play"
         engine = AVAudioEngine()
         recordingFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
         player = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
@@ -33,17 +34,10 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stopPlaying(sender: UIButton) {
-        player.stop()
+        self.stopAndReset()
     }
     
-    func playSpeed(speed: Float) {
-        player.stop()
-        player.rate = Float(speed)
-        player.currentTime = 0.0
-        player.play()
-    }
-    
-    @IBAction func playChipmunkAudio(sender: UIButton) {
+    @IBAction func playChipmunk(sender: UIButton) {
         playPitch(1000)
     }
     
@@ -51,23 +45,34 @@ class PlaySoundsViewController: UIViewController {
         playPitch(-1000)
     }
     
+    func playSpeed(speed: Float) {
+        self.stopAndReset()
+        player.rate = speed
+        player.currentTime = 0.0
+        player.play()
+    }
+    
     func playPitch(pitch: Float) {
-        player.stop()
-        engine.stop()
-        engine.reset()
-        
-        var pitchPlayer = AVAudioPlayerNode()
+        self.stopAndReset()
+        var pitchPlayNode = AVAudioPlayerNode()
         var timePitch = AVAudioUnitTimePitch()
         timePitch.pitch = pitch
         
-        engine.attachNode(pitchPlayer)
+        engine.attachNode(pitchPlayNode)
         engine.attachNode(timePitch)
-        engine.connect(pitchPlayer, to: timePitch, format: recordingFile.processingFormat)
+        engine.connect(pitchPlayNode, to: timePitch, format: recordingFile.processingFormat)
         engine.connect(timePitch, to: engine.outputNode, format: recordingFile.processingFormat)
-        pitchPlayer.scheduleFile(recordingFile, atTime: nil, completionHandler: nil)
+        pitchPlayNode.scheduleFile(recordingFile, atTime: nil, completionHandler: nil)
         engine.startAndReturnError(nil)
         
-        pitchPlayer.play()
+        pitchPlayNode.play()
+    }
+    
+    func stopAndReset() {
+        // DRY
+        player.stop()
+        engine.stop()
+        engine.reset()
     }
     
     override func didReceiveMemoryWarning() {
