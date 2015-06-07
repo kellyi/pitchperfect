@@ -23,19 +23,21 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
     }
 
+    // set or reset the view when it appears
     override func viewWillAppear(animated: Bool) {
         self.resetView()
         recordingLabel.text = "tap to record"
     }
     
+    // DRY
     func resetView() {
-        // DRY
         stopButton.hidden = true
         stopLabel.hidden = true
         recordButton.enabled = true
         recordingLabel.hidden = false
     }
     
+    // record audio
     @IBAction func recordAudio(sender: UIButton) {
         stopButton.hidden = false
         stopLabel.hidden = false
@@ -57,6 +59,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
+    // stop recording
     @IBAction func stopRecording(sender: UIButton) {
         self.resetView()
         audioRecorder.stop()
@@ -64,6 +67,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioSession.setActive(false, error: nil)
     }
     
+    // call segue
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
             recordedAudio = RecordedAudio(path: recorder.url, title: recorder.url.lastPathComponent!)
@@ -71,17 +75,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    // segue to PlaySoundsViewController
+    // and pass it the RecordedAudio object
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecording") {
             let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

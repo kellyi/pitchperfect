@@ -16,6 +16,7 @@ class PlaySoundsViewController: UIViewController {
     var recordingFile:AVAudioFile!
     var engine:AVAudioEngine!
     
+    // setup objects and view on load
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Play"
@@ -25,26 +26,33 @@ class PlaySoundsViewController: UIViewController {
         player.enableRate = true
     }
     
+    // call the playSpeed function with a slow rate
     @IBAction func playSlow(sender: UIButton) {
         playSpeed(0.5)
     }
 
+    // call the playSpeed function with a fast rate
     @IBAction func playFast(sender: UIButton) {
         playSpeed(2.0)
     }
     
+    // use the stop button's input to stop the AVAudioPlayer object
+    // and to stop and reset the AVAudioEngine object
     @IBAction func stopPlaying(sender: UIButton) {
         self.stopAndReset()
     }
     
+    // call the playPitch function with a very high pitch
     @IBAction func playChipmunk(sender: UIButton) {
         playPitch(1000)
     }
     
+    // call the playPitch function with a very low pitch
     @IBAction func playDarf(sender: UIButton) {
         playPitch(-1000)
     }
     
+    // play file at given rate
     func playSpeed(speed: Float) {
         self.stopAndReset()
         player.rate = speed
@@ -52,6 +60,7 @@ class PlaySoundsViewController: UIViewController {
         player.play()
     }
     
+    // use AVAudioEngineObject to play file at requested pitch
     func playPitch(pitch: Float) {
         self.stopAndReset()
         var pitchPlayNode = AVAudioPlayerNode()
@@ -68,15 +77,10 @@ class PlaySoundsViewController: UIViewController {
         pitchPlayNode.play()
     }
     
+    // DRY
     func stopAndReset() {
-        // DRY
         player.stop()
         engine.stop()
         engine.reset()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
