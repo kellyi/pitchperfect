@@ -7,6 +7,4 @@ The app records and saves audio from the device's microphone, then allows the us
 
 Here are two screenshots:
 
-![recording screen](https://github.com/kellyi/pitchperfect/blob/master/pitchperfect1.png)
-
-![playback screen](https://github.com/kellyi/pitchperfect/blob/master/pitchperfect2.png)
+![recording screen](https://github.com/kellyi/pitchperfect/blob/master/pitchperfect1.png) && ![playback screen](https://github.com/kellyi/pitchperfect/blob/master/pitchperfect2.png)
